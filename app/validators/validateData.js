@@ -1,8 +1,10 @@
 import { printErrors } from '../utils/printErrors.js';
 
 const validateData = (dataArray, nameOfDataArray) => {
-  // if (dataArray.length != 10) {
-  //   console.log('Массив с данными должен содержать 10 строк!');
+  // const DATA_LENGTH = 10;
+  // const ROUND_SIZE = 32;
+  // if (dataArray.length != DATA_LENGTH) {
+  //   console.log(`Массив с данными должен содержать ${DATA_LENGTH} строк!`);
   // }
 
   const errorsArray = [];
@@ -12,10 +14,10 @@ const validateData = (dataArray, nameOfDataArray) => {
 
     const reducedString = str.split(' ').join('');
 
-    if (reducedString.length != 32) {
+    if (reducedString.length != ROUND_SIZE) {
       const errorObject = {
         number: i + 1,
-        error: `длина строки (без учёта пробелов) не равна 32`
+        error: `длина строки (без учёта пробелов) не равна ${ROUND_SIZE}`
       }
 
       errorsArray.push(errorObject);
