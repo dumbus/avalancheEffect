@@ -1,4 +1,4 @@
-const errorMessenger = (errorsArray) => {
+const printErrors = (errorsArray) => {
   if (!errorsArray.length) {
     return;
   }
@@ -14,4 +14,4 @@ const errorMessenger = (errorsArray) => {
   console.log('Исправьте указанные ошибки и попробуйте ещё раз');
 };
 
-export { errorMessenger };
+export { printErrors };

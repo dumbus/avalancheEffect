@@ -1,5 +1,8 @@
-import { dataValidator, resultsValidator } from './helpers/validation.js';
-import { countDifferences, countAvalancheCoefficients } from './helpers/counters.js';
+import { validateData } from './validators/validateData.js';
+import { validateResults } from './validators/validateResults.js';
+import { countDifferentBits } from './counters/countDifferentBits.js';
+import { countAvalancheCoefficients } from './counters/countAvalancheCoefficients.js';
+import { printResultsTable } from './utils/printResultTable.js';
 
 // const testErrorsData = [
 //   '7109cc53 ff266014 847ee03a 5f46bd42', // is ok
@@ -33,13 +36,15 @@ const testWithOneData = [
 // console.log(avalancheCoefficients);
 
 const solver = (arr1, arr2) => {
-  dataValidator(arr1, 'без \"1\"');
-  dataValidator(arr2, 'с \"1\"');
+  validateData(arr1, 'без \"1\"');
+  validateData(arr2, 'с \"1\"');
 
-  const differencesArr = countDifferences(arr1, arr2);
-  const avalancheCoefficientsArr = countAvalancheCoefficients(differencesArr);
+  const differentBitsArr = countDifferentBits(arr1, arr2);
+  const avalancheCoefficientsArr = countAvalancheCoefficients(differentBitsArr);
 
-  console.log(resultsValidator(differencesArr, avalancheCoefficientsArr));
+  const validatedResults = validateResults(differentBitsArr, avalancheCoefficientsArr);
+
+  printResultsTable(validatedResults);
 }
 
 solver(testWithoutOneData, testWithOneData);
