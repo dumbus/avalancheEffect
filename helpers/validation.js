@@ -1,3 +1,6 @@
+import { errorMessenger } from './messengers.js';
+import { findMaxLength } from './utils.js';
+
 const dataValidator = (dataArray, nameOfDataArray) => {
   // if (dataArray.length != 10) {
   //   console.log('Массив с данными должен содержать 10 строк!');
@@ -33,23 +36,46 @@ const dataValidator = (dataArray, nameOfDataArray) => {
     }
   }
 
-  printErrors(errorsArray);
+  errorMessenger(errorsArray);
 };
 
-const printErrors = (errorsArray) => {
-  if (!errorsArray.length) {
-    return;
+const resultsValidator = (differencesArr, avalancheCoefficientsArr) => {
+  const length = differencesArr.length;
+
+  const resultsArr = [[], [], []]; // round | differences | coefficients
+
+  for (let i = 0; i < length; i++) {
+    const roundStr = `Раунд: ${i + 1}`;
+    const differencesStr = `Кол-во разных бит: ${differencesArr[i]}`;
+    const avalancheCoefficientsStr = `Коэфф-нт лавинного эффекта: ${avalancheCoefficientsArr[i]}`;
+
+    resultsArr[0].push(roundStr);
+    resultsArr[1].push(differencesStr);
+    resultsArr[2].push(avalancheCoefficientsStr);
   }
 
-  for (let i = 0; i < errorsArray.length; i++) {
-    const errorObject = errorsArray[i];
+  const maxLengthArr = [findMaxLength(resultsArr[0]), findMaxLength(resultsArr[1]), findMaxLength(resultsArr[2])];
 
-    const { number, nameOfDataArray, error } = errorObject;
+  for (let i = 0; i < resultsArr.length; i++) {
+    const arr = resultsArr[i];
 
-    console.log(`Строка №${number} в массиве ${nameOfDataArray} содержит ошибку: ${error}`);
+    for (let j = 0; j < arr.length; j++) {
+      while (arr[j].length < maxLengthArr[i]) {
+        arr[j] += ' ';
+      }
+    }
   }
 
-  console.log('Исправьте указанные ошибки и попробуйте ещё раз');
-}
+  const linesNumber = resultsArr[0].length;
+  const linesArr = [];
 
-export { dataValidator };
+  for (let i = 0; i < linesNumber; i++) {
+    const line = `${resultsArr[0][i]} | ${resultsArr[1][i]} | ${resultsArr[2][i]}`;
+
+    linesArr.push(line);
+  }
+
+  return linesArr;
+};
+
+export { dataValidator, resultsValidator };

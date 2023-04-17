@@ -1,5 +1,5 @@
-import { dataValidator } from './helpers/validation.js';
-import { countDifferences } from './helpers/countDifferences.js';
+import { dataValidator, resultsValidator } from './helpers/validation.js';
+import { countDifferences, countAvalancheCoefficients } from './helpers/counters.js';
 
 // const testErrorsData = [
 //   '7109cc53 ff266014 847ee03a 5f46bd42', // is ok
@@ -17,38 +17,29 @@ const testWithOneData = [
   'b831192c 60ddbdfa 46e6115b d84b3370'
 ];
 
-// program should show: 
+// differences should be: 
 // 1
-// 7
+// 20
 
-dataValidator(testWithoutOneData, 'без \"1\"');
-dataValidator(testWithOneData, 'с \"1\"');
+// dataValidator(testWithoutOneData, 'без \"1\"');
+// dataValidator(testWithOneData, 'с \"1\"');
 
-// countDifferences(testWithoutOneData, testWithOneData);
+// const differencesArray = countDifferences(testWithoutOneData, testWithOneData);
 
-const parseStringToBinary = (str) => {
-  const resultArray = [];
+// console.log(differencesArray);
 
-  for (let i = 0; i < str.length; i++) {
-    const charToBinaryStr = hexToBin(str[i]);
+// const avalancheCoefficients = countAvalancheCoefficients(differencesArray);
 
-    resultArray.push(charToBinaryStr);
-  }
+// console.log(avalancheCoefficients);
 
-  const resultStr = resultArray.join('');
+const solver = (arr1, arr2) => {
+  dataValidator(arr1, 'без \"1\"');
+  dataValidator(arr2, 'с \"1\"');
 
-  return resultStr;
-};
+  const differencesArr = countDifferences(arr1, arr2);
+  const avalancheCoefficientsArr = countAvalancheCoefficients(differencesArr);
 
-const hexToBin = (strNumber) => {
-  const hexToDec = parseInt(strNumber, 16);
-  let decToBin = hexToDec.toString(2);
-
-  while (decToBin.length < 4) {
-    decToBin = '0' + decToBin;
-  }
-
-  return decToBin;
+  console.log(resultsValidator(differencesArr, avalancheCoefficientsArr));
 }
 
-console.log(parseStringToBinary('aa'));
+solver(testWithoutOneData, testWithOneData);
