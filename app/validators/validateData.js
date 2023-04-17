@@ -15,27 +15,25 @@ const validateData = (dataArray, nameOfDataArray) => {
     if (reducedString.length != 32) {
       const errorObject = {
         number: i + 1,
-        nameOfDataArray,
         error: `длина строки (без учёта пробелов) не равна 32`
       }
 
       errorsArray.push(errorObject);
-    }
+    } else {
+      const regex = /^[\da-z]+$/i;
 
-    const regex = /^[\da-z]+$/i;
-
-    if (!regex.test(reducedString)) {
-      const errorObject = {
-        number: i + 1,
-        nameOfDataArray,
-        error: `в строке присутствуют символы не из латинского алфавита или цифр`
+      if (!regex.test(reducedString)) {
+        const errorObject = {
+          number: i + 1,
+          error: `в строке присутствуют символы не из латинского алфавита или цифр`
+        }
+  
+        errorsArray.push(errorObject);
       }
-
-      errorsArray.push(errorObject);
     }
   }
 
-  printErrors(errorsArray);
+  printErrors(errorsArray, nameOfDataArray);
 };
 
 export { validateData };
