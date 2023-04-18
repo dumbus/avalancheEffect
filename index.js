@@ -27,7 +27,16 @@ const withOneData = `
 `;
 
 const parseDataFromString = (strData) => {
-  const trimmedStr = strData.slice(1).slice(0, strData.length - 2);
+  let trimmedStr = strData;
+
+  if (trimmedStr[0] === '\n' | trimmedStr[0] === '\r') {
+    trimmedStr = trimmedStr.slice(1);
+  }
+
+  if (trimmedStr[trimmedStr.length - 1] === '\n' | trimmedStr[trimmedStr.length - 1] === '\r') {
+    trimmedStr = trimmedStr.slice(0, trimmedStr.length - 1);
+  }
+
   const strArr = trimmedStr.split(' ').join('').split('\n');
 
   return strArr;
@@ -42,7 +51,7 @@ const validateData = (dataArray) => {
   if (dataArray.length != DATA_LENGTH) {
     const errorObject = {
       type: 'arrayErr',
-      error: `Массив с данными должен содержать ${DATA_LENGTH} строк!`
+      error: `Данные должны содержать ${DATA_LENGTH} строк!`
     }
 
     errorsArray.push(errorObject);
@@ -55,7 +64,7 @@ const validateData = (dataArray) => {
       const errorObject = {
         type: 'stringErr',
         number: i + 1,
-        error: `длина строки (без учёта пробелов) не равна ${ROUND_SIZE}`
+        error: `длина раунда шифрования (без учёта пробелов) не равна ${ROUND_SIZE}`
       }
 
       errorsArray.push(errorObject);
@@ -66,7 +75,7 @@ const validateData = (dataArray) => {
         const errorObject = {
           type: 'stringErr',
           number: i + 1,
-          error: `в строке присутствуют недопустимые символы`
+          error: `в раунде шифрования присутствуют недопустимые символы`
         }
   
         errorsArray.push(errorObject);
@@ -82,7 +91,7 @@ const printErrors = (errorsArray, nameOfDataArray) => {
     return;
   }
 
-  console.log(`Ошибки в массиве ${nameOfDataArray}:`);
+  console.log(`Ошибки в блоке данных ${nameOfDataArray}:`);
 
   for (let i = 0; i < errorsArray.length; i++) {
     const errorObject = errorsArray[i];
@@ -96,7 +105,7 @@ const printErrors = (errorsArray, nameOfDataArray) => {
     } else {
       const { number, error } = errorObject;
 
-      console.log(`Строка №${number} содержит ошибку: ${error}`);
+      console.log(`Раунд №${number} содержит ошибку: ${error}`);
     }
   }
 
