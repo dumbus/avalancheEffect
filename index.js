@@ -1,4 +1,4 @@
-// // Сюда необходимо записать строки раундов без "1"
+// Сюда необходимо записать строки раундов без "1"
 const withoutOneData = [
   '',
   '',
@@ -54,14 +54,21 @@ const withOneData = [
 //   '9ad94740 d8b5f3bc 968701cd c17fa440'
 // ];
 
+
 const validateData = (dataArray) => {
   const ROUND_SIZE = 32;
   const DATA_LENGTH = 10;
-  if (dataArray.length != DATA_LENGTH) {
-    console.log(`Массив с данными должен содержать ${DATA_LENGTH} строк!`);
-  }
 
   const errorsArray = [];
+
+  if (dataArray.length != DATA_LENGTH) {
+    const errorObject = {
+      type: 'arrayErr',
+      error: `Массив с данными должен содержать ${DATA_LENGTH} строк!`
+    }
+
+    errorsArray.push(errorObject);
+  }
 
   for (let i = 0; i < dataArray.length; i++) {
     const str = dataArray[i];
@@ -70,6 +77,7 @@ const validateData = (dataArray) => {
 
     if (reducedString.length != ROUND_SIZE) {
       const errorObject = {
+        type: 'stringErr',
         number: i + 1,
         error: `длина строки (без учёта пробелов) не равна ${ROUND_SIZE}`
       }
@@ -80,6 +88,7 @@ const validateData = (dataArray) => {
 
       if (!regex.test(reducedString)) {
         const errorObject = {
+          type: 'stringErr',
           number: i + 1,
           error: `в строке присутствуют символы не из латинского алфавита или цифр`
         }
@@ -102,9 +111,17 @@ const printErrors = (errorsArray, nameOfDataArray) => {
   for (let i = 0; i < errorsArray.length; i++) {
     const errorObject = errorsArray[i];
 
-    const { number, error } = errorObject;
+    const { type } = errorObject;
 
-    console.log(`Строка №${number} содержит ошибку: ${error}`);
+    if (type === 'arrayErr') {
+      const { error } = errorObject;
+
+      console.log(error);
+    } else {
+      const { number, error } = errorObject;
+
+      console.log(`Строка №${number} содержит ошибку: ${error}`);
+    }
   }
 
   console.log('!!! Исправьте указанные ошибки и попробуйте ещё раз !!!\n');
