@@ -1,59 +1,37 @@
 // Сюда необходимо записать строки раундов без "1"
-const withoutOneData = [
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
-  ''
-];
+const withoutOneData = `
+  7109cc53 ff266014 847ee03a 5f46bd42
+  b831192c 60ddbdfa b0e7e6ad d84b3370
+  4b9f356e 6f2ba661 721c1c02 e14ea7d2
+  7e239dee d474e285 fb182a32 23a7fb71
+  2239f94d 8cd6e0c0 976c7642 d4bd7c85
+  17faf007 98b00e89 517f11d3 d536dab8
+  ac4de44a abfb129a b2c4462c 2da9871c
+  934b20a3 843df823 0e507c1a 36f2c549
+  a846aaec 0b55b0eb 3aae62de 5a37721a
+  eb53dc79 6094a398 022383e8 e781576a
+`;
 
 // Сюда необходимо записать строки раундов с "1"
-const withOneData = [
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
-  ''
-];
+const withOneData = `
+  7109cd53 ff266014 847ee03a 5f46bd42
+  b831192c 60ddbdfa 46e6115b d84b3370
+  478b2d62 411fbc7b 13a1a1de 4de24891
+  918fa42c 503f2432 c34c750b 0fc23a2f
+  3aa05d33 fb0d9154 fd32c73c 2da6269e
+  302e9ace 1c2fa3e0 5fe19708 443e2a14
+  cece5782 86f64feb 3eb54d01 ce2e2025
+  6ab8e024 edac18b1 146bbfcf 68ab7383
+  0110908e 7e408088 06265d57 64d556b9
+  9ad94740 d8b5f3bc 968701cd c17fa440
+`;
 
-// ================= Пример с моими строками (можно раскомментировать и посмотреть, как должно работать) =================
+const parseDataFromString = (strData) => {
+  const trimmedStr = strData.slice(1).slice(0, strData.length - 2);
+  const strArr = trimmedStr.split(' ').join('').split('\n');
 
-// const withoutOneData = [
-//   '7109cc53 ff266014 847ee03a 5f46bd42',
-//   'b831192c 60ddbdfa b0e7e6ad d84b3370',
-//   '4b9f356e 6f2ba661 721c1c02 e14ea7d2',
-//   '7e239dee d474e285 fb182a32 23a7fb71',
-//   '2239f94d 8cd6e0c0 976c7642 d4bd7c85',
-//   '17faf007 98b00e89 517f11d3 d536dab8',
-//   'ac4de44a abfb129a b2c4462c 2da9871c',
-//   '934b20a3 843df823 0e507c1a 36f2c549',
-//   'a846aaec 0b55b0eb 3aae62de 5a37721a',
-//   'eb53dc79 6094a398 022383e8 e781576a'
-// ];
-
-// const withOneData = [
-//   '7109cd53 ff266014 847ee03a 5f46bd42',
-//   'b831192c 60ddbdfa 46e6115b d84b3370',
-//   '478b2d62 411fbc7b 13a1a1de 4de24891',
-//   '918fa42c 503f2432 c34c750b 0fc23a2f',
-//   '3aa05d33 fb0d9154 fd32c73c 2da6269e',
-//   '302e9ace 1c2fa3e0 5fe19708 443e2a14',
-//   'cece5782 86f64feb 3eb54d01 ce2e2025',
-//   '6ab8e024 edac18b1 146bbfcf 68ab7383',
-//   '0110908e 7e408088 06265d57 64d556b9',
-//   '9ad94740 d8b5f3bc 968701cd c17fa440'
-// ];
-
+  return strArr;
+};
 
 const validateData = (dataArray) => {
   const ROUND_SIZE = 32;
@@ -73,9 +51,7 @@ const validateData = (dataArray) => {
   for (let i = 0; i < dataArray.length; i++) {
     const str = dataArray[i];
 
-    const reducedString = str.split(' ').join('');
-
-    if (reducedString.length != ROUND_SIZE) {
+    if (str.length != ROUND_SIZE) {
       const errorObject = {
         type: 'stringErr',
         number: i + 1,
@@ -86,7 +62,7 @@ const validateData = (dataArray) => {
     } else {
       const regex = /^[\da-f]+$/i;
 
-      if (!regex.test(reducedString)) {
+      if (!regex.test(str)) {
         const errorObject = {
           type: 'stringErr',
           number: i + 1,
@@ -266,7 +242,10 @@ const printResultsTable = (arr) => {
   console.log(divider);
 };
 
-const solver = (arrWithoutOne, arrWithOne) => {
+const solver = (strWithoutOneStr, strWithOneStr) => {
+  const arrWithoutOne = parseDataFromString(strWithoutOneStr);
+  const arrWithOne = parseDataFromString(strWithOneStr);
+
   const arrWithoutOneErrors = validateData(arrWithoutOne);
   const arrWithOneErrors = validateData(arrWithOne);
 
