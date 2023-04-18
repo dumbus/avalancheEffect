@@ -40,7 +40,7 @@ const withoutOneData = `
 ```
 
 *Скриншот с ошибкой:*  
-![Неверная длина массива](https://user-images.githubusercontent.com/79057837/232645642-9c334d90-5102-430e-8a53-fe40e08af71f.png)
+![Неверная длина блока данных](https://user-images.githubusercontent.com/79057837/232743830-cda641ed-cea9-491c-8e3d-cd59f30ce07f.PNG)
 
 2. Использование недопустимых символов:
 ```
@@ -59,7 +59,7 @@ const withoutOneData = `
 ```
 
 *Скриншот с ошибкой:*  
-![Недопустимые символы](https://user-images.githubusercontent.com/79057837/232645785-91a88cf4-3a42-4184-85a9-f6ca59aa0836.png)
+![Недопустимые символы](https://user-images.githubusercontent.com/79057837/232743870-fc37e9f6-8c33-47b6-8b7e-45e67a1b54f1.PNG)
 
 3. Недостаточное количество значащих символов:
 ```
@@ -78,7 +78,7 @@ const withoutOneData = `
 ```
 
 *Скриншот с ошибкой:*  
-![Неверная длина строки](https://user-images.githubusercontent.com/79057837/232645806-6200b73d-5c9c-4cde-afd2-122261c2c538.png)
+![Неверная длина раунда шифрования](https://user-images.githubusercontent.com/79057837/232743923-0bb6d159-5b6a-4f50-ac21-f85ed23f37b5.PNG)
 
 ### Примеры данных, предоставленных без ошибок:
 
@@ -97,4 +97,4 @@ const withoutOneData = `
 `;
 ```
 *Скриншот с результатами работы программы:*  
-![Full Example Result](https://user-images.githubusercontent.com/79057837/232645903-0beb95d3-c4b7-4ebf-8f5b-73b9cfad25a5.png)
+![Результат](https://user-images.githubusercontent.com/79057837/232743987-7bdbf297-c8bf-42f9-96ce-5f04e03be558.PNG)
