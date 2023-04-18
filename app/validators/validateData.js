@@ -16,9 +16,7 @@ const validateData = (dataArray) => {
   for (let i = 0; i < dataArray.length; i++) {
     const str = dataArray[i];
 
-    const reducedString = str.split(' ').join('');
-
-    if (reducedString.length != ROUND_SIZE) {
+    if (str.length != ROUND_SIZE) {
       const errorObject = {
         type: 'stringErr',
         number: i + 1,
@@ -29,7 +27,7 @@ const validateData = (dataArray) => {
     } else {
       const regex = /^[\da-f]+$/i;
 
-      if (!regex.test(reducedString)) {
+      if (!regex.test(str)) {
         const errorObject = {
           type: 'stringErr',
           number: i + 1,
