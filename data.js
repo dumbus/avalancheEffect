@@ -1,3 +1,4 @@
+// Сюда необходимо записать строки раундов без "1"
 const withoutOneData = [
   '',
   '',
@@ -11,6 +12,7 @@ const withoutOneData = [
   ''
 ];
 
+// Сюда необходимо записать строки раундов с "1"
 const withOneData = [
   '',
   '',
@@ -54,16 +56,16 @@ const withOneData = [
 // ================= data template for my lab work =================
 
 // const withoutOneData = [
-//   '7109cc53 ff266014 847ee03a 5f46bd42',
-//   'b831192c 60ddbdfa b0e7e6ad d84b3370',
-//   '4b9f356e 6f2ba661 721c1c02 e14ea7d2',
-//   '7e239dee d474e285 fb182a32 23a7fb71',
-//   '2239f94d 8cd6e0c0 976c7642 d4bd7c85',
-//   '17faf007 98b00e89 517f11d3 d536dab8',
-//   'ac4de44a abfb129a b2c4462c 2da9871c',
-//   '934b20a3 843df823 0e507c1a 36f2c549',
-//   'a846aaec 0b55b0eb 3aae62de 5a37721a',
-//   'eb53dc79 6094a398 022383e8 e781576a'
+  // '7109cc53 ff266014 847ee03a 5f46bd42',
+  // 'b831192c 60ddbdfa b0e7e6ad d84b3370',
+  // '4b9f356e 6f2ba661 721c1c02 e14ea7d2',
+  // '7e239dee d474e285 fb182a32 23a7fb71',
+  // '2239f94d 8cd6e0c0 976c7642 d4bd7c85',
+  // '17faf007 98b00e89 517f11d3 d536dab8',
+  // 'ac4de44a abfb129a b2c4462c 2da9871c',
+  // '934b20a3 843df823 0e507c1a 36f2c549',
+  // 'a846aaec 0b55b0eb 3aae62de 5a37721a',
+  // 'eb53dc79 6094a398 022383e8 e781576a'
 // ];
 
 // const withOneData = [

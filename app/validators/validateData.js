@@ -1,11 +1,17 @@
 const validateData = (dataArray) => {
   const ROUND_SIZE = 32;
   const DATA_LENGTH = 10;
-  if (dataArray.length != DATA_LENGTH) {
-    console.log(`Массив с данными должен содержать ${DATA_LENGTH} строк!`);
-  }
 
   const errorsArray = [];
+
+  if (dataArray.length != DATA_LENGTH) {
+    const errorObject = {
+      type: 'arrayErr',
+      error: `Массив с данными должен содержать ${DATA_LENGTH} строк!`
+    }
+
+    errorsArray.push(errorObject);
+  }
 
   for (let i = 0; i < dataArray.length; i++) {
     const str = dataArray[i];
@@ -14,6 +20,7 @@ const validateData = (dataArray) => {
 
     if (reducedString.length != ROUND_SIZE) {
       const errorObject = {
+        type: 'stringErr',
         number: i + 1,
         error: `длина строки (без учёта пробелов) не равна ${ROUND_SIZE}`
       }
@@ -24,6 +31,7 @@ const validateData = (dataArray) => {
 
       if (!regex.test(reducedString)) {
         const errorObject = {
+          type: 'stringErr',
           number: i + 1,
           error: `в строке присутствуют символы не из латинского алфавита или цифр`
         }

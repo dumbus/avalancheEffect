@@ -8,9 +8,17 @@ const printErrors = (errorsArray, nameOfDataArray) => {
   for (let i = 0; i < errorsArray.length; i++) {
     const errorObject = errorsArray[i];
 
-    const { number, error } = errorObject;
+    const { type } = errorObject;
 
-    console.log(`Строка №${number} содержит ошибку: ${error}`);
+    if (type === 'arrayErr') {
+      const { error } = errorObject;
+
+      console.log(error);
+    } else {
+      const { number, error } = errorObject;
+
+      console.log(`Строка №${number} содержит ошибку: ${error}`);
+    }
   }
 
   console.log('!!! Исправьте указанные ошибки и попробуйте ещё раз !!!\n');
