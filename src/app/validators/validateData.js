@@ -1,13 +1,13 @@
 const validateData = (dataArray) => {
-  const ROUND_SIZE = 32;
-  const DATA_LENGTH = 10;
+  const ROUND_SIZE = Number(process.env.ROUND_SIZE);
+  const ROUND_NUMBER = Number(process.env.ROUND_NUMBER);
 
   const errorsArray = [];
 
-  if (dataArray.length != DATA_LENGTH) {
+  if (dataArray.length != ROUND_NUMBER) {
     const errorObject = {
       type: 'arrayErr',
-      error: `Массив с данными должен содержать ${DATA_LENGTH} строк!`
+      error: `Массив с данными должен содержать ${ROUND_NUMBER} строк!`
     }
 
     errorsArray.push(errorObject);
