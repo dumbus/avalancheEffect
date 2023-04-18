@@ -5,8 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node ./src/index.js --mode=template",
-    "start:cli": "node ./src/index.js --mode=cli",
+    "start": "node ./src/index.js",
     "lint": "eslint . --ext .js"
   },
   "author": "dumbus",
