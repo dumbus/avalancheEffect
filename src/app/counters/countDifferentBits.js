@@ -1,4 +1,4 @@
-import { parseStringToBinary } from '../utils/parseStringToBinary.js';
+import { parseStringToBinary } from '../parsers/parseStringToBinary.js';
 
 const countDifferentBits = (arr1, arr2) => {
   const differencesArray = [];

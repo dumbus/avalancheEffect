@@ -1,8 +1,13 @@
 import * as dotenv from 'dotenv';
 
-import { withoutOneData, withOneData } from './data.js';
+import { getAppMode } from './app/parsers/parseAppMode.js';
+import { getData } from './app/parsers/parseDataFromUser.js';
 import { solver } from './app/solver.js';
 
 dotenv.config();
 
-solver(withoutOneData, withOneData);
+const appMode = getAppMode();
+
+const data = getData(appMode);
+
+solver(data);

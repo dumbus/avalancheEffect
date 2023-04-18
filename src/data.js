@@ -1,5 +1,5 @@
 // Сюда необходимо записать строки раундов без "1"
-const withoutOneData = `
+const withoutOneDataStr = `
   7109cc53 ff266014 847ee03a 5f46bd42
   b831192c 60ddbdfa b0e7e6ad d84b3370
   4b9f356e 6f2ba661 721c1c02 e14ea7d2
@@ -13,7 +13,7 @@ const withoutOneData = `
 `;
 
 // Сюда необходимо записать строки раундов с "1"
-const withOneData = `
+const withOneDataStr = `
   7109cd53 ff266014 847ee03a 5f46bd42
   b831192c 60ddbdfa 46e6115b d84b3370
   478b2d62 411fbc7b 13a1a1de 4de24891
@@ -81,4 +81,4 @@ const withOneData = `
 //   '9ad94740 d8b5f3bc 968701cd c17fa440'
 // ];
 
-export { withoutOneData, withOneData };
+export { withoutOneDataStr, withOneDataStr };

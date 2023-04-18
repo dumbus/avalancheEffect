@@ -1,14 +1,14 @@
-import { parseDataFromString } from './utils/parseDataFromString.js';
+import { parseDataFromString } from './parsers/parseDataFromString.js';
 import { validateData } from './validators/validateData.js';
 import { validateResults } from './validators/validateResults.js';
 import { countDifferentBits } from './counters/countDifferentBits.js';
 import { countAvalancheCoefficients } from './counters/countAvalancheCoefficients.js';
-import { printResultsTable } from './utils/printResultTable.js';
-import { printErrors } from './utils/printErrors.js';
+import { printResultsTable } from './utils/messenger.js';
+import { printErrors } from './utils/messenger.js';
 
-const solver = (strWithoutOneStr, strWithOneStr) => {
-  const arrWithoutOne = parseDataFromString(strWithoutOneStr);
-  const arrWithOne = parseDataFromString(strWithOneStr);
+const solver = ({ withoutOneDataStr, withOneDataStr }) => {
+  const arrWithoutOne = parseDataFromString(withoutOneDataStr);
+  const arrWithOne = parseDataFromString(withOneDataStr);
 
   const arrWithoutOneErrors = validateData(arrWithoutOne);
   const arrWithOneErrors = validateData(arrWithOne);
