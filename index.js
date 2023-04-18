@@ -84,13 +84,13 @@ const validateData = (dataArray) => {
 
       errorsArray.push(errorObject);
     } else {
-      const regex = /^[\da-z]+$/i;
+      const regex = /^[\da-f]+$/i;
 
       if (!regex.test(reducedString)) {
         const errorObject = {
           type: 'stringErr',
           number: i + 1,
-          error: `в строке присутствуют символы не из латинского алфавита или цифр`
+          error: `в строке присутствуют недопустимые символы`
         }
   
         errorsArray.push(errorObject);
