@@ -40,7 +40,7 @@ const withoutOneData = `
 ```
 
 *Скриншот с ошибкой:*  
-![Неверная длина блока данных](https://user-images.githubusercontent.com/79057837/232743830-cda641ed-cea9-491c-8e3d-cd59f30ce07f.PNG)
+![Неверная длина блока данных](https://user-images.githubusercontent.com/79057837/232745093-7f7f3440-d885-4e76-b0f4-061f01b74d49.PNG)
 
 2. Использование недопустимых символов:
 ```
