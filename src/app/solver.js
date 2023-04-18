@@ -14,21 +14,21 @@ const solver = (strWithoutOneStr, strWithOneStr) => {
   const arrWithOneErrors = validateData(arrWithOne);
 
   if (arrWithoutOneErrors.length) {
-    printErrors(arrWithoutOneErrors, 'без \"1\"');
+    printErrors(arrWithoutOneErrors, 'без "1"');
   }
 
   if (arrWithOneErrors.length) {
-    printErrors(arrWithOneErrors, 'с \"1\"');
+    printErrors(arrWithOneErrors, 'с "1"');
   }
 
   if (!arrWithoutOneErrors.length && !arrWithOneErrors.length) {
     const differentBitsArr = countDifferentBits(arrWithoutOne, arrWithOne);
     const avalancheCoefficientsArr = countAvalancheCoefficients(differentBitsArr);
   
-    const validatedResults = validateResults(differentBitsArr, avalancheCoefficientsArr);;
+    const validatedResults = validateResults(differentBitsArr, avalancheCoefficientsArr);
   
     printResultsTable(validatedResults);
   }
-}
+};
 
 export { solver };

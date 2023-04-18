@@ -5,11 +5,14 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "lint": "eslint . --ext .js"
   },
   "author": "dumbus",
   "license": "ISC",
   "devDependencies": {
-    "dotenv": "^16.0.3"
+    "@eslint/create-config": "^0.4.2",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.38.0"
   }
 }

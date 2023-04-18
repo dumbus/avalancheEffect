@@ -21,6 +21,6 @@ const hexToBin = (strNumber) => {
   }
 
   return decToBin;
-}
+};
 
 export { parseStringToBinary };

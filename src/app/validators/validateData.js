@@ -8,7 +8,7 @@ const validateData = (dataArray) => {
     const errorObject = {
       type: 'arrayErr',
       error: `Массив с данными должен содержать ${ROUND_NUMBER} строк!`
-    }
+    };
 
     errorsArray.push(errorObject);
   }
@@ -21,7 +21,7 @@ const validateData = (dataArray) => {
         type: 'stringErr',
         number: i + 1,
         error: `длина строки (без учёта пробелов) не равна ${ROUND_SIZE}`
-      }
+      };
 
       errorsArray.push(errorObject);
     } else {
@@ -31,8 +31,8 @@ const validateData = (dataArray) => {
         const errorObject = {
           type: 'stringErr',
           number: i + 1,
-          error: `в строке присутствуют символы не из латинского алфавита или цифр`
-        }
+          error: 'в строке присутствуют недопустимые символы'
+        };
   
         errorsArray.push(errorObject);
       }
